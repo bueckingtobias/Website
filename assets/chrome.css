@@ -12,7 +12,7 @@
   --sx-sans:"Avenir Next","Avenir","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
   --sx-serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
   --sx-ease:cubic-bezier(.22,.8,.24,1);
-  --header-h:96px; --footer-h:64px;
+  --header-h:96px; --header-now:96px; --footer-h:64px;
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 html{scroll-padding-top:calc(var(--header-h) + 12px)}
@@ -66,9 +66,12 @@ html{scroll-padding-top:calc(var(--header-h) + 12px)}
   .sx-top{padding:10px 16px}
 }
 
+/* Messen ohne Animation (siehe site.js) */
+.sx-hdr.sx-nt,.sx-hdr.sx-nt *{transition:none !important}
+
 /* ---------- Menü (Handy / iPad hoch) ---------- */
 .sx-veil{position:fixed;inset:0;z-index:990;background:rgba(10,20,14,.55);opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s}
-.sx-drawer{position:fixed;left:0;right:0;bottom:0;top:var(--header-h);z-index:995;visibility:hidden;font-family:var(--sx-sans);color:var(--sx-cream);
+.sx-drawer{position:fixed;left:0;right:0;bottom:0;top:var(--header-now);z-index:995;visibility:hidden;font-family:var(--sx-sans);color:var(--sx-cream);
   background:radial-gradient(520px 360px at 85% 8%,rgba(139,92,246,.12),transparent 65%),radial-gradient(500px 360px at 0% 100%,rgba(205,182,130,.1),transparent 70%),linear-gradient(180deg,#1b3626,#13281c);
   clip-path:circle(0 at calc(100% - 34px) 0);transition:clip-path .7s var(--sx-ease),visibility 0s .7s;
   padding:26px max(26px,env(safe-area-inset-left,0px)) calc(var(--footer-h) + 28px);overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}

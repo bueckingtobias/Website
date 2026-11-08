@@ -46,8 +46,8 @@ main.sx-main{display:block;padding-bottom:calc(var(--footer-h) + var(--safe-bott
 .btn.ghost:hover{box-shadow:inset 0 0 0 1px rgba(232,220,196,.55),0 18px 34px -12px rgba(0,0,0,.6)}
 
 /* ---------- Reveal-Animationen ---------- */
-html.js .rv{opacity:0;transform:translateY(34px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1.1s var(--ease),filter 1s var(--ease);transition-delay:calc(var(--i,0)*.12s)}
-html.js .rv.in{opacity:1;transform:none;filter:none}
+html.js .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1.1s var(--ease);transition-delay:calc(var(--i,0)*.12s)}
+html.js .rv.in{opacity:1;transform:none}
 html.js .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
 html.js .w>span{display:inline-block;transform:translateY(112%);transition:transform 1.2s var(--ease);transition-delay:calc(.15s + var(--i,0)*.11s)}
 html.js .ready .w>span{transform:none}
@@ -57,13 +57,12 @@ html.js .ready .w>span{transform:none}
   padding:calc(var(--header-h) + clamp(34px,5vw,70px)) 0 calc(clamp(90px,12vw,150px) + 56px);
   background:radial-gradient(900px 520px at 85% 5%,rgba(139,92,246,.07),transparent 62%),linear-gradient(180deg,#1b3827 0%,#1F3D2B 55%,#23432f 100%)}
 .dots{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(232,220,196,.5) 1px,transparent 1.5px);background-size:24px 24px;opacity:.26;
-  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 35%,transparent 80%);mask-image:linear-gradient(180deg,#000 0,#000 35%,transparent 80%);animation:dots 30s linear infinite}
-@keyframes dots{to{background-position:240px 120px}}
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 35%,transparent 80%);mask-image:linear-gradient(180deg,#000 0,#000 35%,transparent 80%)}
 .blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;will-change:transform}
 .b1{width:420px;height:420px;right:-90px;top:60px;background:rgba(139,92,246,.10);animation:drift 16s ease-in-out infinite alternate}
 .b2{width:360px;height:360px;left:-80px;top:260px;background:rgba(61,106,76,.6);animation:drift 20s ease-in-out -6s infinite alternate-reverse}
 @keyframes drift{to{translate:40px -30px;scale:1.12}}
-.hero .wrap{position:relative;z-index:2;transform:translateY(calc(var(--sy,0)*.12px))}
+.hero .wrap{position:relative;z-index:2;will-change:transform}
 .arrows{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(14px,3vw,36px);margin:0 0 30px;font-size:12.5px;font-weight:600}
 .arrows a{text-decoration:none;color:rgba(232,220,196,.82);padding:6px 2px;transition:color .3s,transform .4s var(--ease)}
 .arrows a:hover{color:#fff;transform:translateY(-2px)}
@@ -315,6 +314,7 @@ html.js .ready .w>span{transform:none}
   @keyframes sw{0%{transform:scaleX(.2);transform-origin:0 50%}60%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
 }
 @media(max-width:899px){
+  .blob{animation:none}
   .seal{display:none}
   .fl{grid-template-columns:1fr;margin-top:-70px}
   .fcard.a,.fcard.c{rotate:0deg;translate:0}
@@ -339,7 +339,8 @@ html.js .ready .w>span{transform:none}
 }
 @media(max-width:600px){
   .kicker{font-size:10.5px;letter-spacing:.24em;gap:10px}
-  .hero .kicker::before,.hero .kicker::after{display:none}
+  .hero .kicker::before,.hero .kicker::after,.pagehead .kicker::before,.pagehead .kicker::after{display:none}
+  .pagehead .kicker{letter-spacing:.18em}
   .stat{padding:18px 4px}
   .stat span{font-size:9.5px;letter-spacing:.14em}
   .stats.hs{margin-top:36px}
@@ -351,6 +352,6 @@ html.js .ready .w>span{transform:none}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   html.js .rv,html.js .w>span{opacity:1;transform:none;filter:none;transition:none}
-  .blob,.dots,.seal,.seal .spin,.pulse,.swipe i{animation:none}
+  .blob,.seal,.seal .spin,.pulse,.swipe i{animation:none}
   .pc,.panel,.ph .art img{transition:none}
 }
